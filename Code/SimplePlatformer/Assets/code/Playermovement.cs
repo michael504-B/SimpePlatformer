@@ -13,6 +13,10 @@ public class Playermovement : MonoBehaviour
 
     public float distToGround = 1f;
 
+    public GameObject DeathLine;
+
+    Vector3 StartPos;
+
     Rigidbody rb;
 
     // Start is called before the first frame update
@@ -37,6 +41,8 @@ public class Playermovement : MonoBehaviour
       }
 
       GroundCheck();
+
+      DeathLineAndRespawn();  
     }
 
     void Jump()
@@ -58,5 +64,13 @@ public class Playermovement : MonoBehaviour
 
        
     }
-       
+
+    void DeathLineAndRespawn()
+    {
+        if(transform.position.y < DeathLine.transform.position.y)
+        {
+            transform.position = StartPos;
+        }
+    }
+
 }
